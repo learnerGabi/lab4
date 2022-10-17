@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  api:
+    build: ./api/
+    hostname: ${API_HOST}
+    volumes:
+      - ./api/code:/app
+    command: python api.py 
+    ports:
+      - ${API_PORT} # change 5000 to 6000 because something wrong with the 5000 path on my laptop
+  consumer:
+    build: ./consumer/
+    hostname: ${CON_HOST}
+    volumes:
+      - ./consumer/code:/app
+    command: python consumer.py   
+    ports:
+      - ${CON_PORT}
+
+
+
+
